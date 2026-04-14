@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #0A0A0F;
+  --color-brand-navy: #0B1829;
+  --color-brand-light: #F5F0EB;
+  --color-brand-accent: #1B3A5C;
+  --color-brand-accent-light: #2A5A8C;
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+@layer base {
+  :root {
+    --background: #0A0A0F;
+    --foreground: #F5F0EB;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hover-corner-expand {
+    position: relative;
+  }
+  .hover-corner-expand::before,
+  .hover-corner-expand::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: var(--color-brand-accent);
+    border-style: solid;
+    transition: all 0.3s ease;
+    opacity: 0;
+  }
+  .hover-corner-expand::before {
+    top: -4px;
+    left: -4px;
+    border-width: 1px 0 0 1px;
+  }
+  .hover-corner-expand::after {
+    bottom: -4px;
+    right: -4px;
+    border-width: 0 1px 1px 0;
+  }
+  .hover-corner-expand:hover::before,
+  .hover-corner-expand:hover::after {
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+  }
+
+  .image-gradient-mask {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+
+  .image-glow {
+    box-shadow: 0 0 40px rgba(27, 58, 92, 0.15);
+  }
+}
